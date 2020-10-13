@@ -41,19 +41,21 @@ public class GameController : GameElement, IController
     public void NewGame()
     {
         this.game.model.IsGameOver = false;
-        if (SaveData.getInstance() == null)
+        if (SaveData.getInstance() == null || SaveData.getInstance().loadedMode == false)
         {
             this.game.model.Time = GameModel.mode.Time;
         } else
         {
             this.game.model.Time = SaveData.getInstance().saveGameData.Time;
         }
+        Debug.Log("init time:" + this.game.model.Time);
         TimeController.getInstance().StartTimer();
     }
 
     public void GameOver()
     {
         this.game.model.IsGameOver = true;
+        Model.DeleteSave();
         game.Notify(PopupNotification.GameOver, null, null);
     }
 

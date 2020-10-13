@@ -9,4 +9,5 @@ public static class BoardNotification
     public const string NewGame = "board.newGame";
     public const string MoveCell = "board.moveCell";
     public const string AnimateCell = "board.animateCell";
+    public const string MoveCellByTouch = "board.moveCellByTouch";
 }

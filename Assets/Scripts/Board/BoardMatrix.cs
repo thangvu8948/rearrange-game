@@ -136,6 +136,23 @@ public class BoardMatrix : BoardElement
         return null;
     }
 
+    public BoardTile MoveCellToSpace(Tile tile)
+    {
+        BoardTile emptyCell = findEmpty();
+        Vector2 curPos = tile.Position;
+        foreach(Vector2 dir in DIRECTIONS.AllDirection)
+        {
+            BoardTile desCell = getTileByIndex(curPos + dir);
+            if (desCell != null && desCell.position == emptyCell.position)
+            {
+                swapCell(desCell.position, curPos);
+                board.Notify(BoardNotification.AnimateCell, null, getTileByIndex(curPos+dir));
+                return desCell;
+            }
+        }
+        return null;
+    }
+
     public List<Vector2> getPossibleMove()
     {
         BoardTile tile = findEmpty();
@@ -161,6 +178,8 @@ public class BoardMatrix : BoardElement
             swapCell(empty.position, empty.position + moves[r_value]);
         }
     }
+
+
 
     public bool IsWin
     {

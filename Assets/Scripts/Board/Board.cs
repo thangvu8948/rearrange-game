@@ -75,6 +75,7 @@ public class Board : BoardElement, IController
                 GameObject pieceImg = Instantiate(prefab, position, Quaternion.identity);
                 pieceImg.GetComponent<Tile>().setNo(cell.no, croppeds[cell.no - 1]);
                 cell.tile = pieceImg.GetComponent<Tile>();
+                cell.tile.Position = cell.position;
                 pieceImg.transform.SetParent(this.transform);
                 pieceImg.transform.localPosition = position;
                 pieceImg.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
@@ -140,7 +141,6 @@ public class Board : BoardElement, IController
                 NewGame();
                 break;
             case BoardNotification.MoveCell:
-                BoardTile tile = null;
                board.model.MoveCellToSpace((Vector2)p_data[0]);
                 
                     //board.Notify(BoardNotification.AnimateCell, null, tile);
@@ -154,6 +154,10 @@ public class Board : BoardElement, IController
                     ShowCompleteImage();
                 }
                 break;
+            case BoardNotification.MoveCellByTouch:
+                board.model.MoveCellToSpace((Tile)p_data[0]);
+                break;
+
         }
     }
 

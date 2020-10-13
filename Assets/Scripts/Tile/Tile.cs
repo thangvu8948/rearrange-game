@@ -7,6 +7,7 @@ public class Tile : MonoBehaviour
 {
     public Text label;
     public GameObject image;
+    public Vector2 Position { get; set; }
     public int no { get; set; }
     public void setNo(int no, Sprite sprite)
     {
@@ -19,5 +20,11 @@ public class Tile : MonoBehaviour
     {
         this.no = no;
         this.label.text = no.ToString();
+    }
+
+    public void moveCell()
+    {
+        Debug.Log($"$click: {Position}");
+        Controller.getInstance().boardController.board.Notify(BoardNotification.MoveCellByTouch, null, this);
     }
 }

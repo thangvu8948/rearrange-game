@@ -54,23 +54,21 @@ public class HomeManager : MonoBehaviour
     }
     public void OnPlay()
     {
-        if (selected != -1)
+
+        if (SaveData.getInstance() != null)
         {
-            if (SaveData.getInstance() != null)
-            {
-                SaveData.getInstance().loadedMode = false;
-            }
-            Sprite sprite = imageSelection.CurrentPageObject().GetComponentInChildren<Image>().sprite;
-            GameModel.mode = new Mode((EMode)selected, sprite, imageSelection.CurrentPage);
-            Loading.getInstance().LoadScene("game");
+            SaveData.getInstance().loadedMode = false;
         }
+        Sprite sprite = imageSelection.CurrentPageObject().GetComponentInChildren<Image>().sprite;
+        GameModel.mode = new Mode((EMode)selected, sprite, imageSelection.CurrentPage);
+        Loading.getInstance().LoadScene("game");
+
     }
 
     public void onSelected(int index)
     {
-        
+
         selected = index;
-        Debug.Log(index);
         for (int i = 0; i < buttonsLevel.Length; i++)
         {
             if (i == index)

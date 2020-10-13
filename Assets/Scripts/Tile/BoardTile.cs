@@ -6,8 +6,19 @@ using UnityEngine.UIElements;
 
 public class BoardTile
 {
-
-    public Vector2 position { get; set; }
+    private Vector2 pos;
+    public Vector2 position
+    {
+        get { return pos; }
+        set
+        {
+            pos = value;
+            if (tile != null)
+            {
+                tile.Position = value;
+            }
+        }
+    }
     public Tile tile { get; set; }
     private int number = 0;
     private bool isAccessible = true;
@@ -46,5 +57,6 @@ public class BoardTile
     {
         position = new Vector2(x, y);
         this.no = no;
+        if (tile != null) tile.Position = position;
     }
 }

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEditor.PackageManager;
+
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Model : MonoBehaviour
 {
@@ -39,6 +35,11 @@ public class Model : MonoBehaviour
         bf.Serialize(file, data);
         file.Close();
         Debug.Log("saved");
+    }
+
+    public static void DeleteSave()
+    {
+        File.Delete(Application.persistentDataPath + "/savedGame.dat");
     }
 
     public static bool Load()

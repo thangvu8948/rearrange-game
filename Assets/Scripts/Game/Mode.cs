@@ -50,9 +50,9 @@ public class Mode
 
 public static class LEVEL_TIME
 {
-    public const int EASY = 11;
-    public const int MEDIUM = 121;
-    public const int HARD = 91;
+    public const int EASY = 60;
+    public const int MEDIUM = 120;
+    public const int HARD = 200;
 }
 
 public static class LEVEL_BOARD_SIZE

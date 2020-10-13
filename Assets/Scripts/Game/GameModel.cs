@@ -17,7 +17,7 @@ public class GameModel : GameElement
     {
         get
         {
-            int t = Time + 1;
+            int t = Time;
             int m = t / 60;
             int s = t % 60;
             string time = "";

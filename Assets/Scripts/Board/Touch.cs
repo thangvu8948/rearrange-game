@@ -17,7 +17,7 @@ public class Touch : BoardElement, IPointerClickHandler
 
     private void Update()
     {
-        if (!Model.getInstance().gameModel.IsGameOver && !Model.getInstance().gameModel.IsPause)
+        /*if (!Model.getInstance().gameModel.IsGameOver && !Model.getInstance().gameModel.IsPause)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -39,6 +39,6 @@ public class Touch : BoardElement, IPointerClickHandler
                 Debug.Log("Right");
                 board.Notify(BoardNotification.MoveCell, null, DIRECTIONS.LEFT);
             }
-        }
+        }*/
     }
 }

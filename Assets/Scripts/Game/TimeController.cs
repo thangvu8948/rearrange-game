@@ -24,7 +24,8 @@ public class TimeController : MonoBehaviour
     }
     IEnumerator Count()
     {
-
+        text.text = Model.getInstance().gameModel.TimeFormat;
+        yield return new WaitForSeconds(2);
         while (Model.getInstance() == null)
         {
             yield return null;
@@ -45,7 +46,7 @@ public class TimeController : MonoBehaviour
                 model.Time -= 1;
                 if (model.Time < 0 && GameModel.mode.mode != EMode.ENDLESS)
                 {
-                    text.text = Model.getInstance().gameModel.TimeFormat;
+                    //text.text = Model.getInstance().gameModel.TimeFormat;
                     model.game.Notify(GameNotification.GameOver, null, null);
                 }
             }
